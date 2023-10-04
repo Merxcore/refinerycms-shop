@@ -1,0 +1,45 @@
+<% content_for :body_content_title do %>
+  <%= @order.title %>
+<% end %>
+
+<% content_for :body do %>
+  <section>
+    <h1>Products</h1>
+    <p>
+      <%=raw @order.products %>
+    </p>
+  </section>
+  <section>
+    <h1>Paid</h1>
+    <p>
+      <%=raw @order.paid %>
+    </p>
+  </section>
+  <section>
+    <h1>Date Paid</h1>
+    <p>
+      <%=raw @order.date_paid %>
+    </p>
+  </section>
+  <section>
+    <h1>User</h1>
+    <p>
+      <%=raw @order.user %>
+    </p>
+  </section>
+<% end %>
+
+<% content_for :side_body do %>
+  <aside>
+    <h2><%= t('.other') %></h2>
+    <ul id="orders">
+      <% @orders.each do |order| %>
+        <li>
+          <%= link_to order.title, refinery.order_order_path(order) %>
+        </li>
+      <% end %>
+    </ul>
+  </aside>
+<% end %>
+
+<%= render '/refinery/content_page' %>

@@ -1,0 +1,45 @@
+<%-if(@cart)%>
+  <ul id="cart-internals" class="collection">
+
+    <%- price = 0 %>
+    <% @cart.orderproducts.each do |order_product| %>
+    <%- product = order_product.product %>
+    <%- price += product.price * order_product.quantity %>
+    <li class="product collection-item avatar" data-id="<%= product.id %>" data-price="<%= product.price %>">
+      <% if product.photo %>
+        <%= image_tag product.photo.thumbnail.url, class: "circle" %>
+      <% else %>
+        <%= image_tag "logo.png", class: "circle" %>
+      <% end %>
+
+      <span class="title"><%= product.name %></span>
+      <%= form_with(url: refinery.order_path(order_product.order, 'js'), method: 'PUT', class: 'update_cart') do  %>
+          <%= hidden_field_tag(:product_id, product.id) %>
+          <span class="secondary-content remove-item right">
+              <button type="submit" onclick="$(form).find('#quantity').val(0);"><i class="material-icons tiny tooltipped" data-tooltip="Remove item from cart" data-position="right">clear</i></button>
+          </span>
+
+          <p>
+            <!-- TODO add feature for adjusting quantity -->
+            <%# <%= number_field_tag :quantity,
+              order_product.quantity,
+              {step: 1, onchange: "this.form.submit()"} %>
+            <%= order_product.quantity %>
+             x
+            <%= number_to_currency product.price %>
+          </p>
+      <% end %>
+    </li>
+    <% end %>
+
+    <% unless @cart.paid? %>
+    <li class="cart-total">
+        <b>Total: <%= number_to_currency price %></b>
+        <br>
+        <%= link_to "Checkout", refinery.order_path(@cart), class: "btn btn-large orange" %>
+    </li>
+    <% end %>
+  </ul>
+<%else%>
+  <ul class="collection"><li class="collection-item"><p>Cart is empty</p></li></ul>
+<%end%>

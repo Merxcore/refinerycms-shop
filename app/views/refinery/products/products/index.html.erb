@@ -1,0 +1,39 @@
+<h1>Products</h1>
+
+<div class="container">
+  <div class="row" id="products">
+    <% @products.each do |product| %>
+    <div class="col s4">
+      <div class="card product hoverable">
+          <div class="card-image">
+            <% if product.photo %>
+              <%= link_to refinery.products_product_path(product) do %>
+                <%= image_tag product.photo.thumbnail.url, loading: "lazy" %>
+              <% end %>
+            <% else %>
+              <%= image_tag "logo.png" %>
+            <% end %>
+            <%= form_with(url: refinery.orders_path('js'), method: 'POST', class: 'add_to_cart') do  %>
+              <%= hidden_field_tag(:product_id, product.id) %>
+              <button type="submit" class="btn-floating btn-large halfway-fab waves-effect waves-light orange hoverable tooltipped" data-tooltip="Add to cart" data-position="right"><i class="material-icons">add_shopping_cart</i></button>
+            <% end %>
+          </div>
+          <div class="card-content grey darken-3">
+            <span class="card-title">
+              <%= link_to product.name, refinery.products_product_path(product), alt: "Carolina Wild Harvests Product #{product.name}" %>
+            </span>
+            <%#= product.body.html_safe %>
+          </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<% if flash["notice"] %>
+  <script type="text/javascript">
+    M.toast({html: '<%= flash["notice"] %>'});
+  </script>
+<% end %>
+
+<%#= render '/refinery/content_page' %>

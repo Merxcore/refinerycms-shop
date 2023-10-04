@@ -1,0 +1,20 @@
+<ul>
+  <% if ::Refinery::Products::Admin::CustomersController.searchable? %>
+    <li>
+      <%= render '/refinery/admin/search', :url => refinery.products_admin_customers_path %>
+    </li>
+  <% end %>
+  <li>
+    <%= action_label :add, refinery.new_products_admin_customer_path, t('.create_new') %>
+  </li>
+<% if !searching? && ::Refinery::Products::Admin::CustomersController.sortable? && ::Refinery::Products::Customer.many? %>
+  <li>
+    <%= action_label :reorder,
+                     refinery.products_admin_customers_path,
+                     t('.reorder', what:  "Customers"), id: 'reorder_action'%>
+    <%= action_label :reorder_done,
+                     refinery.products_admin_customers_path,
+                      t('.reorder_done', what: "Customers"), id: 'reorder_action_done', class: 'hidden'%>
+  </li>
+<% end %>
+</ul>

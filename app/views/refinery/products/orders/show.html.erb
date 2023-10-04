@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row card" id="products-cart">
+    <h2>Cart</h2>
+    <div class="col l6">
+      <ul class="collection">
+      <% @order.flat_products.each do |product| %>
+        <li class="card product hoverable horizontal">
+          <div class="card-image">
+          <%= link_to refinery.products_product_path(product) do %>
+            <% if product.photo %>
+              <%= image_tag product.photo.thumbnail.url %>
+            <% else %>
+              <%= image_tag "logo.png" %>
+            <% end %>
+            <!-- <a class="btn-floating btn-large halfway-fab waves-effect waves-light orange hoverable tooltipped" data-tooltip="Add to cart" data-position="right"><i class="material-icons">add_shopping_cart</i></a> -->
+          <% end %>
+          </div>
+          <div class="card-stacked">
+            <div class="card-content">
+              <%= link_to product.name, refinery.products_product_path(product), alt: "Carolina Wild Harvests Product #{product.name}", class: "card-title" %>
+              <%#= product.body.html_safe %>
+              <p>
+                Price: <%= number_to_currency product.price %>
+              </p>
+              <br>
+              <div class="input-field">
+                <label for="product_<%= product.id %>_quantity">Quantity</label>
+                <%= number_field_tag "product_#{product.id}_quantity", @order.product_quantity(product.id), min: 0 %>
+              </div>
+            </div>
+          </div>
+        </li>
+      <% end %>
+      </ul>
+    </div>
+
+    <div class="col l6">
+      <h3>Total: <%= number_to_currency @order.total %></h3>
+      <br>
+      <hr>
+      <div class="container-wide">
+        <p>Enter your email address and click 'Checkout' to complete your order and pay by credit card.</p>
+        <div class="input-field">
+          <label for="email">Email</label>
+          <%= text_field_tag "email" %>
+        <p>
+          <img src="/assets/stripe.svg" alt="Carolina Wild Harvests - Pay with Stripe" />
+          <a href="#checkout" class="btn btn-large orange">Checkout</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%#= render '/refinery/content_page' %>

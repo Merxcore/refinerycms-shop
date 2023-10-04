@@ -1,0 +1,31 @@
+<%= form_for [refinery, :order_admin, @order] do |f| -%>
+  <%= render '/refinery/admin/error_messages',
+              :object => @order,
+              :include_object_name => true %>
+
+  <div class='field'>
+    <%= f.label :products -%>
+    <%= f.text_field :products, :class => 'larger widest' -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :paid -%>
+    <%= f.check_box :paid, :checked => @order[:paid] -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :date_paid -%>
+    <%= f.date_select :date_paid -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :user -%>
+    <%= f.text_field :user -%>
+  </div>
+
+  <%= render '/refinery/admin/form_actions', f: f,
+             continue_editing: false,
+             delete_title: t('delete', scope: 'refinery.orders.admin.orders.order'),
+             delete_confirmation: t('message', scope: 'refinery.admin.delete'),
+             cancel_url: refinery.order_admin_orders_path -%>
+<% end -%>

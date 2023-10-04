@@ -1,0 +1,13 @@
+<h1>Order canceled</h1>
+
+<div class="container white">
+
+  <ul id="cart-internals" class="collection">
+    <li class="collection-item">
+      <p>Your order has been canceled.</p>
+      <%= link_to "View you cart", refinery.order_path(params[:order_id], @cart), class: "btn btn-large orange" %>
+      <%= link_to "Continue shopping", "/products", class: "btn btn-large grey" %>
+    </div>
+  </ul>
+
+</div>

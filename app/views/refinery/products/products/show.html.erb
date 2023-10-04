@@ -1,0 +1,47 @@
+<div class="container" id="product">
+  <div class="col card horizontal">
+    <div class="card-image">
+      <%= image_fu @product.photo, nil %>
+    </div>
+
+    <div class="card-stacked">
+      <div class="card-content">
+        <h1><%=raw @product.name %></h1>
+
+        <span class="card-title strong">Price <%= number_to_currency @product.price %></span>
+        <p><b><%=raw @product.available %></b> available. Updated At
+          <%=raw @product.published_at.to_formatted_s(:long) %>.
+        </p>
+
+        <br>
+        <p>
+          <%=raw @product.body.html_safe %>
+        </p>
+      </div>
+
+      <div class="card-action">
+        <%= link_to "Continue shopping", "/products", class: "btn btn-large grey right" %>
+
+        <%= form_with(url: refinery.orders_path('js'), method: 'POST') do  %>
+          <%= hidden_field_tag(:product_id, @product.id) %>
+          <button type="submit" class="btn btn-large waves-effect waves-light orange">
+          Add to cart</button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+  <!-- <aside>
+    <h2><%#= t('.other') %></h2>
+    <ul id="products">
+      <%# @products.each do |product| %>
+        <li>
+          <%#= link_to product.name, refinery.products_product_path(product) %>
+        </li>
+      <%# end %>
+    </ul>
+  </aside> -->
+
+<%#= render '/refinery/content_page' %>

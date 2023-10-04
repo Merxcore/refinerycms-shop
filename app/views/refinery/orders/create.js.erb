@@ -1,0 +1,7 @@
+$('#cart-internals').html('<%= escape_javascript render(template: 'refinery/products/_cart') %>')
+$('.sidenav').sidenav();
+// $('.sidenav-trigger').
+
+// TODO if quantity exceeds availablility then we need a different message
+M.toast({html: 'Your cart has been updated.'})
+console.log("Create.js.erb");

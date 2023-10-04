@@ -1,0 +1,60 @@
+es:
+  refinery:
+    plugins:
+      orders:
+        title: Orders
+      products:
+        title: Products
+    products:
+      admin:
+        orders:
+          actions:
+            create_new: Crear nuevo order
+            reorder: Reordenar orders
+            reorder_done: Reordenación de orders completada
+          records:
+            title: Orders
+            sorry_no_results: Lo siento, no hay resultados
+            no_items_yet: No hay orders todavía. Pulsa en "Crear nuevo Order" para
+              crear tu primer order.
+          order:
+            view_live_html: Ver este order como abierto al público <br/><em>(abre
+              en ventana nueva)</em>
+            edit: Editar este order
+            delete: Borrar este order para siempre
+        products:
+          actions:
+            create_new: Crear nuevo product
+            reorder: Reordenar products
+            reorder_done: Reordenación de products completada
+          records:
+            title: Products
+            sorry_no_results: Lo siento, no hay resultados
+            no_items_yet: No hay products todavía. Pulsa en "Crear nuevo Product"
+              para crear tu primer product.
+          product:
+            view_live_html: Ver este product como abierto al público <br/><em>(abre
+              en ventana nueva)</em>
+            edit: Editar este product
+            delete: Borrar este product para siempre
+      orders:
+        show:
+          other: Otros orders
+      products:
+        show:
+          other: Otros products
+  activerecord:
+    attributes:
+      refinery/products/order:
+        paid: Paid
+        date_paid: Date Paid
+        user_id: User
+      refinery/products/product:
+        name: Name
+        body: Body
+        draft: Draft
+        published_at: Published At
+        photo: Photo
+        sku: Sku
+        available: Available
+        price: Price

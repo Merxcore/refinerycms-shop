@@ -1,0 +1,10 @@
+<div id="cart" data-total="<%= @cart_total %>">
+    <ul id="slide-out" class="sidenav">
+      <li>
+        <h3>Cart</h3>
+      </li>
+      <%= render(template: 'refinery/products/_cart') %>
+    </ul>
+
+    <span data-target="slide-out" class="sidenav-trigger btn-large orange"><i class="material-icons black-text">add_shopping_cart</i></span>
+</div>

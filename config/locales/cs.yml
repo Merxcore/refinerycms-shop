@@ -1,0 +1,77 @@
+cs:
+  refinery:
+    plugins:
+      orders:
+        title: Orders
+      products:
+        title: Products
+    order:
+      admin:
+        orders:
+          actions:
+            create_new: Přidat Order
+            reorder: Řadit Orders
+            reorder_done: Konec řazení Orders
+          records:
+            title: Orders
+            sorry_no_results: Litujeme, ale nebyly nalezny žádné výsledky.
+            no_items_yet: Zatím nebyly vytvořeny žádné Orders. Zvolte "Přidat Order"
+              pro přidání prvního order.
+          order:
+            view_live_html: Zobrazit náhled order<br/><em>(otevře se v novém okně)</em>
+            edit: Upravit order
+            delete: Smazat order
+      orders:
+        show:
+          other: Další Orders
+    products:
+      admin:
+        orders:
+          actions:
+            create_new: Přidat Order
+            reorder: Řadit Orders
+            reorder_done: Konec řazení Orders
+          records:
+            title: Orders
+            sorry_no_results: Litujeme, ale nebyly nalezny žádné výsledky.
+            no_items_yet: Zatím nebyly vytvořeny žádné Orders. Zvolte "Přidat Order"
+              pro přidání prvního order.
+          order:
+            view_live_html: Zobrazit náhled order<br/><em>(otevře se v novém okně)</em>
+            edit: Upravit order
+            delete: Smazat order
+        products:
+          actions:
+            create_new: Přidat Product
+            reorder: Řadit Products
+            reorder_done: Konec řazení Products
+          records:
+            title: Products
+            sorry_no_results: Litujeme, ale nebyly nalezny žádné výsledky.
+            no_items_yet: Zatím nebyly vytvořeny žádné Products. Zvolte "Přidat Product"
+              pro přidání prvního product.
+          product:
+            view_live_html: Zobrazit náhled product<br/><em>(otevře se v novém okně)</em>
+            edit: Upravit product
+            delete: Smazat product
+      orders:
+        show:
+          other: Další Orders
+      products:
+        show:
+          other: Další Products
+  activerecord:
+    attributes:
+      refinery/products/order:
+        paid: Paid
+        date_paid: Date Paid
+        user_id: User
+      refinery/products/product:
+        name: Name
+        body: Body
+        draft: Draft
+        published_at: Published At
+        photo: Photo
+        sku: Sku
+        available: Available
+        price: Price

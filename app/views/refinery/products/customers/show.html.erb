@@ -1,0 +1,45 @@
+<% content_for :body_content_title do %>
+  <%= @customer.name %>
+<% end %>
+
+<% content_for :body do %>
+  <section>
+    <h1>Name</h1>
+    <p>
+      <%=raw @customer.name %>
+    </p>
+  </section>
+  <section>
+    <h1>Email</h1>
+    <p>
+      <%=raw @customer.email %>
+    </p>
+  </section>
+  <section>
+    <h1>Address</h1>
+    <p>
+      <%=raw @customer.address %>
+    </p>
+  </section>
+  <section>
+    <h1>Stripe Customer</h1>
+    <p>
+      <%=raw @customer.stripe_customer %>
+    </p>
+  </section>
+<% end %>
+
+<% content_for :side_body do %>
+  <aside>
+    <h2><%= t('.other') %></h2>
+    <ul id="customers">
+      <% @customers.each do |customer| %>
+        <li>
+          <%= link_to customer.name, refinery.products_customer_path(customer) %>
+        </li>
+      <% end %>
+    </ul>
+  </aside>
+<% end %>
+
+<%= render '/refinery/content_page' %>
